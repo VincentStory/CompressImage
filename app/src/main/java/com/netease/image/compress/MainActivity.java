@@ -40,7 +40,7 @@ import static com.netease.image.compress.utils.ImagUtil.getImageStreamFromExtern
 
 public class MainActivity extends AppCompatActivity {
 
-    private CompressConfig compressConfig; // 压缩配置
+//    private CompressConfig compressConfig; // 压缩配置
     private ProgressDialog dialog; // 压缩加载框
     private String cameraCachePath; // 拍照源文件路径
 
@@ -88,17 +88,17 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        compressConfig = CompressConfig.builder()
-                .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
-                .setUnCompressNormalPixel(2000) // 标准像素不压缩，默认值：2000
-                .setMaxPixel(1000) // 长或宽不超过的最大像素 (单位px)，默认值：1200
-                .setMaxSize(100 * 1024) // 压缩到的最大大小 (单位B)，默认值：200 * 1024 = 200KB
-                .enablePixelCompress(true) // 是否启用像素压缩，默认值：true
-                .enableQualityCompress(true) // 是否启用质量压缩，默认值：true
-                .enableReserveRaw(true) // 是否保留源文件，默认值：true
-                .setCacheDir("") // 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE
-                .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
-                .create();
+//        compressConfig = CompressConfig.builder()
+//                .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
+//                .setUnCompressNormalPixel(2000) // 标准像素不压缩，默认值：2000
+//                .setMaxPixel(1000) // 长或宽不超过的最大像素 (单位px)，默认值：1200
+//                .setMaxSize(100 * 1024) // 压缩到的最大大小 (单位B)，默认值：200 * 1024 = 200KB
+//                .enablePixelCompress(true) // 是否启用像素压缩，默认值：true
+//                .enableQualityCompress(true) // 是否启用质量压缩，默认值：true
+//                .enableReserveRaw(true) // 是否保留源文件，默认值：true
+//                .setCacheDir("") // 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE
+//                .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
+//                .create();
 //        compressConfig = CompressConfig.getDefaultConfig();
     }
 
@@ -166,14 +166,22 @@ public class MainActivity extends AppCompatActivity {
 
     // 开始压缩
     private void compress(ArrayList<Photo> photos) {
-        if (compressConfig.isShowCompressDialog()) {
-            Log.e("netease >>> ", "开启了加载框");
-            dialog = CommonUtils.showProgressDialog(this, "压缩中……");
-        }
+//        if (compressConfig.isShowCompressDialog()) {
+//            Log.e("netease >>> ", "开启了加载框");
+//            dialog = CommonUtils.showProgressDialog(this, "压缩中……");
+//        }
 
 
         CompressImageManager.builder(this)
-                .config(compressConfig)
+                .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
+                .setUnCompressNormalPixel(2000) // 标准像素不压缩，默认值：2000
+                .setMaxPixel(1000) // 长或宽不超过的最大像素 (单位px)，默认值：1200
+                .setMaxSize(100 * 1024) // 压缩到的最大大小 (单位B)，默认值：200 * 1024 = 200KB
+                .enablePixelCompress(true) // 是否启用像素压缩，默认值：true
+                .enableQualityCompress(true) // 是否启用质量压缩，默认值：true
+                .enableReserveRaw(true) // 是否保留源文件，默认值：true
+                .setCacheDir("") // 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE
+                .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
                 .loadPhtos(photos)
                 .setCompressListener(new CompressImage.CompressListener() {
                     @Override

@@ -55,7 +55,7 @@ public class CompressConfig implements Serializable {
         return unCompressMinPixel;
     }
 
-    private void setUnCompressMinPixel(int unCompressMinPixel) {
+    public void setUnCompressMinPixel(int unCompressMinPixel) {
         this.unCompressMinPixel = unCompressMinPixel;
     }
 
@@ -63,7 +63,7 @@ public class CompressConfig implements Serializable {
         return unCompressNormalPixel;
     }
 
-    private void setUnCompressNormalPixel(int unCompressNormalPixel) {
+    public void setUnCompressNormalPixel(int unCompressNormalPixel) {
         this.unCompressNormalPixel = unCompressNormalPixel;
     }
 
@@ -71,7 +71,7 @@ public class CompressConfig implements Serializable {
         return maxPixel;
     }
 
-    private void setMaxPixel(int maxPixel) {
+    public void setMaxPixel(int maxPixel) {
         this.maxPixel = maxPixel;
     }
 
@@ -79,7 +79,7 @@ public class CompressConfig implements Serializable {
         return maxSize;
     }
 
-    private void setMaxSize(int maxSize) {
+    public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
     }
 
@@ -87,7 +87,7 @@ public class CompressConfig implements Serializable {
         return enablePixelCompress;
     }
 
-    private void setEnablePixelCompress(boolean enablePixelCompress) {
+    public void setEnablePixelCompress(boolean enablePixelCompress) {
         this.enablePixelCompress = enablePixelCompress;
     }
 
@@ -95,7 +95,7 @@ public class CompressConfig implements Serializable {
         return enableQualityCompress;
     }
 
-    private void setEnableQualityCompress(boolean enableQualityCompress) {
+    public void setEnableQualityCompress(boolean enableQualityCompress) {
         this.enableQualityCompress = enableQualityCompress;
     }
 
@@ -103,7 +103,7 @@ public class CompressConfig implements Serializable {
         return enableReserveRaw;
     }
 
-    private void setEnableReserveRaw(boolean enableReserveRaw) {
+    public void setEnableReserveRaw(boolean enableReserveRaw) {
         this.enableReserveRaw = enableReserveRaw;
     }
 
@@ -119,7 +119,7 @@ public class CompressConfig implements Serializable {
         return showCompressDialog;
     }
 
-    private void setShowCompressDialog(boolean showCompressDialog) {
+    public void setShowCompressDialog(boolean showCompressDialog) {
         this.showCompressDialog = showCompressDialog;
     }
 

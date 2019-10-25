@@ -85,18 +85,65 @@ public class CompressImageManager implements CompressImage {
 
         private CompressImageManager manager;
         private CompressImageUtil compressImageUtil;
+        private CompressConfig config;
 
         public Builder(Context context) {
             manager = new CompressImageManager();
-            compressImageUtil = new CompressImageUtil(context);
+            config = CompressConfig.builder().create();
+            compressImageUtil = new CompressImageUtil(context, config);
         }
 
-        public Builder config(CompressConfig config) {
-            compressImageUtil.setConfig(config);
-            manager.setCompressImageUtil(compressImageUtil);
-            manager.setConfig(config);
+        public Builder setUnCompressMinPixel(int unCompressMinPixel) {
+            config.setUnCompressMinPixel(unCompressMinPixel);
             return this;
         }
+
+
+        public Builder setUnCompressNormalPixel(int unCompressNormalPixel) {
+            config.setUnCompressNormalPixel(unCompressNormalPixel);
+          return this;
+        }
+
+        public Builder setMaxSize(int maxSize) {
+            config.setMaxSize(maxSize);
+            return this;
+        }
+
+        public Builder setMaxPixel(int maxPixel) {
+            config.setMaxPixel(maxPixel);
+            return this;
+        }
+
+        public Builder enablePixelCompress(boolean enablePixelCompress) {
+            config.setEnablePixelCompress(enablePixelCompress);
+            return this;
+        }
+
+        public Builder enableQualityCompress(boolean enableQualityCompress) {
+            config.setEnableQualityCompress(enableQualityCompress);
+            return this;
+        }
+
+        public Builder enableReserveRaw(boolean enableReserveRaw) {
+            config.setEnableReserveRaw(enableReserveRaw);
+            return this;
+        }
+
+        public Builder setCacheDir(String cacheDir) {
+            config.setCacheDir(cacheDir);
+            return this;
+        }
+
+        public Builder setShowCompressDialog(boolean showCompressDialog) {
+            config.setShowCompressDialog(showCompressDialog);
+            return this;
+        }
+
+//        public Builder config(CompressConfig config) {
+//            compressImageUtil.setConfig(config);
+//
+//            return this;
+//        }
 
         public Builder loadPhtos(ArrayList<Photo> images) {
             manager.setImages(images);
@@ -109,6 +156,8 @@ public class CompressImageManager implements CompressImage {
         }
 
         public Builder compress() {
+            manager.setCompressImageUtil(compressImageUtil);
+            manager.setConfig(config);
             manager.compress();
             return this;
         }
