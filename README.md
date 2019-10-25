@@ -5,17 +5,7 @@
 
 #设置图片压缩参数
 
-  compressConfig = CompressConfig.builder()
-                .setUnCompressMinPixel(1000) 
-                .setUnCompressNormalPixel(2000) 
-                .setMaxPixel(1000) 
-                .setMaxSize(100 * 1024) 
-                .enablePixelCompress(true)
-                .enableQualityCompress(true) 
-                .enableReserveRaw(true) 
-                .setCacheDir("") 
-                .setShowCompressDialog(true) 
-                .create();
+  compressConfig = CompressConfig.builder();
                 
                 
         CompressImageManager.build(this, compressConfig, photos, new CompressImage.CompressListener() {
