@@ -20,11 +20,9 @@ allprojects {
 Step 2. Add the dependency
 
 ```
-
-
 dependencies {
 	        implementation 'com.github.VincentStory:CompressImage:v1.0'
-}
+	    }
 
 ``` 
 
