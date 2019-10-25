@@ -7,11 +7,8 @@
 
 引入：
 
-  implementation 'com.github.VincentStory:CompressImage:v1.0'
-
-## 方法列表
-  方法  | 描述 | --|
-  setUnCompressMinPixel | 最小像素不压缩，默认值：1000  
+`implementation 'com.github.VincentStory:CompressImage:v1.0`
+  
 
 
 
