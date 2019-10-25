@@ -27,7 +27,7 @@
   #压缩图片方法及回调
                 
       CompressImageManager.builder(this)
-                .Config(compressConfig)
+                .config(compressConfig)
                 .loadPhtos(photos)
                 .setCompressListener(new CompressImage.CompressListener() {
                     @Override
