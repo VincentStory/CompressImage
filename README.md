@@ -3,7 +3,8 @@
 引入：
   implementation 'com.github.VincentStory:CompressImage:v1.0'
 
-设置图片压缩参数
+#设置图片压缩参数
+
   compressConfig = CompressConfig.builder()
                 .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
                 .setUnCompressNormalPixel(2000) // 标准像素不压缩，默认值：2000
