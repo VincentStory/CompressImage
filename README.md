@@ -7,8 +7,9 @@
 
 引入：
 
-`implementation 'com.github.VincentStory:CompressImage:v1.0`
-  
+'dependencies {
+	        implementation 'com.github.VincentStory:CompressImage:v1.0'
+	}'
 
 
 
