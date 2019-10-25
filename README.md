@@ -1,6 +1,6 @@
-#可自定义压缩大小的图片压缩库
+# 可自定义压缩大小的图片压缩库
 
-#压缩对比图
+## 压缩对比图
 
 ![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
 
@@ -8,6 +8,11 @@
 引入：
 
   implementation 'com.github.VincentStory:CompressImage:v1.0'
+
+## 方法列表
+ 方法  | 描述 | 
+ setUnCompressMinPixel | 最小像素不压缩，默认值：1000  
+
 
 
 #设置图片压缩参数
