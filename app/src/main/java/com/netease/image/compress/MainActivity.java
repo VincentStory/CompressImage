@@ -164,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     // 开始压缩
     private void compress(ArrayList<Photo> photos) {
         if (compressConfig.isShowCompressDialog()) {
@@ -172,30 +171,33 @@ public class MainActivity extends AppCompatActivity {
             dialog = CommonUtils.showProgressDialog(this, "压缩中……");
         }
 
-        CompressImageManager.build(this, compressConfig, photos, new CompressImage.CompressListener() {
-            @Override
-            public void onCompressSuccess(ArrayList<Photo> arrayList) {
-                Log.e("netease >>> ", "压缩成功" + arrayList.get(0).getCompressPath());
-                mPath2 = arrayList.get(0).getCompressPath();
-                image2.setImageURI(getImageStreamFromExternal(mPath2));
-                getString(mPath2, 2);
-                if (dialog != null && !isFinishing()) {
-                    dialog.dismiss();
-                }
-            }
 
-            @Override
-            public void onCompressFailed(ArrayList<Photo> images, String error) {
-                Log.e("netease >>> ", error);
-                if (dialog != null && !isFinishing()) {
-                    dialog.dismiss();
-                }
-            }
-        }).compress();
+        CompressImageManager.builder(this)
+                .Config(compressConfig)
+                .loadPhtos(photos)
+                .setCompressListener(new CompressImage.CompressListener() {
+                    @Override
+                    public void onCompressSuccess(ArrayList<Photo> arrayList) {
+                        Log.e("netease >>> ", "压缩成功" + arrayList.get(0).getCompressPath());
+                        mPath2 = arrayList.get(0).getCompressPath();
+                        image2.setImageURI(getImageStreamFromExternal(mPath2));
+                        getString(mPath2, 2);
+                        if (dialog != null && !isFinishing()) {
+                            dialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onCompressFailed(ArrayList<Photo> images, String error) {
+                        Log.e("netease >>> ", error);
+                        if (dialog != null && !isFinishing()) {
+                            dialog.dismiss();
+                        }
+                    }
+                }).compress();
+
+
     }
-
-
-
 
 
     public void getString(String photoPath, int type) {
@@ -224,9 +226,9 @@ public class MainActivity extends AppCompatActivity {
             float size = fis.available() / 1000;
             String photoSize = size + "KB";
             if (type == 1)
-                tv2.setText("图片大小" + photoSize);
+                tv2.setText("图片大小:" + photoSize);
             else
-                tv4.setText("图片大小" + photoSize);
+                tv4.setText("图片大小:" + photoSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

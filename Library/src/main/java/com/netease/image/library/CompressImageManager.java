@@ -23,31 +23,47 @@ public class CompressImageManager implements CompressImage {
     private CompressImageUtil compressImageUtil; // 压缩工具类
     private ArrayList<Photo> images; // 要压缩的图片集合
     private CompressImage.CompressListener listener; // 压缩监听，告知MainActivity
-    private CompressConfig config; // 压缩配置
+    private CompressConfig mConfig; // 压缩配置
 
     /**
      * 私有实现
      *
-     * @param context 上下文
-     * @param config 配置
-     * @param images 图片集合
+     * @param context  上下文
+     * @param config   配置
+     * @param images   图片集合
      * @param listener 监听
      * @return
      */
     private CompressImageManager(Context context, CompressConfig config,
-                                ArrayList<Photo> images, CompressListener listener) {
+                                 ArrayList<Photo> images, CompressListener listener) {
         compressImageUtil = new CompressImageUtil(context, config);
-        this.config = config;
+        this.mConfig = config;
         this.images = images;
         this.listener = listener;
+    }
+
+    public void setImages(ArrayList<Photo> images) {
+        this.images = images;
+    }
+
+    public void setListener(CompressListener listener) {
+        this.listener = listener;
+    }
+
+    public void setConfig(CompressConfig config) {
+        this.mConfig = config;
+    }
+
+    public void setCompressImageUtil(CompressImageUtil compressImageUtil) {
+        this.compressImageUtil = compressImageUtil;
     }
 
     /**
      * 静态方法，new实现
      *
-     * @param context 上下文
-     * @param config 配置
-     * @param images 图片集合
+     * @param context  上下文
+     * @param config   配置
+     * @param images   图片集合
      * @param listener 监听
      * @return
      */
@@ -55,6 +71,51 @@ public class CompressImageManager implements CompressImage {
                                       ArrayList<Photo> images, CompressImage.CompressListener listener) {
         return new CompressImageManager(context, config, images, listener);
     }
+
+    public CompressImageManager() {
+    }
+
+
+    public static Builder builder(Context context) {
+        return new Builder(context);
+    }
+
+    public static class Builder {
+
+
+        private CompressImageManager manager;
+        private CompressImageUtil compressImageUtil;
+
+        public Builder(Context context) {
+            manager = new CompressImageManager();
+            compressImageUtil = new CompressImageUtil(context);
+        }
+
+        public Builder Config(CompressConfig config) {
+            compressImageUtil.setConfig(config);
+            manager.setCompressImageUtil(compressImageUtil);
+            manager.setConfig(config);
+            return this;
+        }
+
+        public Builder loadPhtos(ArrayList<Photo> images) {
+            manager.setImages(images);
+            return this;
+        }
+
+        public Builder setCompressListener(CompressListener listener) {
+            manager.setListener(listener);
+            return this;
+        }
+
+        public Builder compress() {
+            manager.compress();
+            return this;
+        }
+
+
+    }
+
 
     @Override
     public void compress() {
@@ -91,7 +152,7 @@ public class CompressImageManager implements CompressImage {
         }
 
         // < 200KB
-        if (file.length() < config.getMaxSize()) {
+        if (file.length() < mConfig.getMaxSize()) {
             continueCompress(image, true);
             return;
         }

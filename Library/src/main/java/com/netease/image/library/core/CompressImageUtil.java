@@ -31,6 +31,14 @@ public class CompressImageUtil {
         this.config = config == null ? CompressConfig.getDefaultConfig() : config;
     }
 
+    public CompressImageUtil(Context context) {
+        this.context = context;
+    }
+
+    public void setConfig(CompressConfig config) {
+        this.config = config == null ? CompressConfig.getDefaultConfig() : config;
+    }
+
     public void compress(String imgPath, CompressResultListener listener) {
         if (config.isEnablePixelCompress()) {
             try {
