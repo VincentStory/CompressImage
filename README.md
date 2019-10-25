@@ -15,3 +15,25 @@
                 .setCacheDir("") // 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE
                 .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
                 .create();
+                
+                
+        CompressImageManager.build(this, compressConfig, photos, new CompressImage.CompressListener() {
+            @Override
+            public void onCompressSuccess(ArrayList<Photo> arrayList) {
+                Log.e("netease >>> ", "压缩成功" + arrayList.get(0).getCompressPath());
+                mPath2 = arrayList.get(0).getCompressPath();
+                image2.setImageURI(getImageStreamFromExternal(mPath2));
+                getString(mPath2, 2);
+                if (dialog != null && !isFinishing()) {
+                    dialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onCompressFailed(ArrayList<Photo> images, String error) {
+                Log.e("netease >>> ", error);
+                if (dialog != null && !isFinishing()) {
+                    dialog.dismiss();
+                }
+            }
+        }).compress();
