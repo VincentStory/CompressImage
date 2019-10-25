@@ -5,9 +5,8 @@
 
 #设置图片压缩参数
 
-  compressConfig = CompressConfig.builder().create();
-  
-  setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
+  compressConfig = CompressConfig.builder()
+  .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
                 
                 
    CompressImageManager.build(this, compressConfig, photos, new CompressImage.CompressListener() {
