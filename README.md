@@ -10,15 +10,6 @@
   implementation 'com.github.VincentStory:CompressImage:v1.0'
 
 
-  方法	描述
-      load	传入原图
-      filter	设置开启压缩条件
-      ignoreBy	不压缩的阈值，单位为K
-      setFocusAlpha	设置是否保留透明通道
-      setTargetDir	缓存压缩图片路径
-      setCompressListener	压缩回调接口
-      setRenameListener	压缩前重命名接口
-
 #设置图片压缩参数
 
        compressConfig = CompressConfig.builder()
