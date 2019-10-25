@@ -1,6 +1,6 @@
 # CompressImage 可自定义压缩大小的图片压缩库
 
-## 压缩对比图
+## 压缩效果对比图
 
 ![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
 
@@ -16,7 +16,7 @@ dependencies {
 
 
 
-#设置图片压缩参数
+## 设置图片压缩参数
 
        compressConfig = CompressConfig.builder()
                 .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
@@ -30,8 +30,8 @@ dependencies {
                 .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
                 .create();
                 
-  #压缩图片方法及回调
-                
+ ## 压缩图片方法及回调
+     ```            
       CompressImageManager.builder(this)
                 .config(compressConfig)
                 .loadPhtos(photos)
@@ -51,3 +51,5 @@ dependencies {
                         }
                     }
                 }).compress();
+		
+ 	``` 
