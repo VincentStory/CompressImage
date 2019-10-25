@@ -31,7 +31,7 @@ dependencies {
                 .create();
                 
  ## 压缩图片方法及回调
- ```           
+     
       CompressImageManager.builder(this)
                 .config(compressConfig)
                 .loadPhtos(photos)
@@ -51,4 +51,4 @@ dependencies {
                         }
                     }
                 }).compress();
-		```
+
