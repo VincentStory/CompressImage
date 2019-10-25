@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         CompressImageManager.builder(this)
-                .Config(compressConfig)
+                .config(compressConfig)
                 .loadPhtos(photos)
                 .setCompressListener(new CompressImage.CompressListener() {
                     @Override

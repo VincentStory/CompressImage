@@ -91,7 +91,7 @@ public class CompressImageManager implements CompressImage {
             compressImageUtil = new CompressImageUtil(context);
         }
 
-        public Builder Config(CompressConfig config) {
+        public Builder config(CompressConfig config) {
             compressImageUtil.setConfig(config);
             manager.setCompressImageUtil(compressImageUtil);
             manager.setConfig(config);
