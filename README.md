@@ -1,6 +1,8 @@
 # 可自定义压缩大小的图片压缩框架
 
 
+
+#效果图
 ![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
 
 
