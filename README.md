@@ -1,5 +1,8 @@
 # 可自定义压缩大小的图片压缩框架
 
+# 效果图
+https://github.com/VincentStory/CompressImage/blob/master/app/src/main/res/drawable/example.jpg
+
 引入：
 
   implementation 'com.github.VincentStory:CompressImage:v1.0'
