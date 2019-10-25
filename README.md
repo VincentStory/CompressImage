@@ -26,21 +26,22 @@
                 
   #压缩图片方法及回调
                 
-        CompressImageManager.build(this, compressConfig, photos, new CompressImage.CompressListener() {
-            @Override
-            public void onCompressSuccess(ArrayList<Photo> arrayList) {
-                Log.e("netease --- ", "压缩成功" + arrayList.get(0).getCompressPath());
-                mPath = arrayList.get(0).getCompressPath();           
-                if (dialog != null && !isFinishing()) {
-                    dialog.dismiss();
-                }
-            }
+      CompressImageManager.builder(this)
+                .Config(compressConfig)
+                .loadPhtos(photos)
+                .setCompressListener(new CompressImage.CompressListener() {
+                    @Override
+                    public void onCompressSuccess(ArrayList<Photo> arrayList) {
+                       //成功后回调 ，返回压缩后的图片对象集合
+                        Log.e("netease >>> ", "压缩成功" + arrayList.get(0).getCompressPath());
+                    }
 
-            @Override
-            public void onCompressFailed(ArrayList<Photo> images, String error) {
-                Log.e("netease --- ", error);
-                if (dialog != null && !isFinishing()) {
-                    dialog.dismiss();
-                }
-            }
-        }).compress();
+                    @Override
+                    public void onCompressFailed(ArrayList<Photo> images, String error) {
+                        //当压缩过程出现问题时调用
+                        Log.e("netease >>> ", error);
+                        if (dialog != null && !isFinishing()) {
+                            dialog.dismiss();
+                        }
+                    }
+                }).compress();
