@@ -25,9 +25,7 @@
             @Override
             public void onCompressSuccess(ArrayList<Photo> arrayList) {
                 Log.e("netease --- ", "压缩成功" + arrayList.get(0).getCompressPath());
-                mPath2 = arrayList.get(0).getCompressPath();
-                image2.setImageURI(getImageStreamFromExternal(mPath2));
-                getString(mPath2, 2);
+                mPath = arrayList.get(0).getCompressPath();           
                 if (dialog != null && !isFinishing()) {
                     dialog.dismiss();
                 }
