@@ -41,8 +41,7 @@ compress()  开始压缩 <br>
 
 
  ## 压缩图片方法及回调
-     ```
-     
+ ```
         CompressImageManager.builder(this)
                 .setUnCompressMinPixel(1000) 
                 .setUnCompressNormalPixel(2000) 
@@ -71,6 +70,4 @@ compress()  开始压缩 <br>
                         }
                     }
                 }).compress();
-
-     ```
-
+```
