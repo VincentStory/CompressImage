@@ -25,42 +25,52 @@ dependencies {
 	    }
 
 ``` 
+## 方法名
+setUnCompressMinPixel()  设置最小不压缩像素值 默认值：1000 <br>
+setUnCompressNormalPixel() 标准像素不压缩，默认值：2000  <br>
+setMaxPixel() 长或宽不超过的最大像素 (单位px)，默认值：1200 <br>
+setMaxSize()   压缩到的最大大小 (单位B)，默认值：200 * 1024 = 200KB <br>
+enablePixelCompress()   是否启用像素压缩，默认值：true <br>
+enableQualityCompress()   是否启用质量压缩，默认值：true <br>
+enableReserveRaw()  是否保留源文件，默认值：true <br>
+setCacheDir() 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE <br>
+setShowCompressDialog()  是否显示压缩进度条，默认值：false <br>
+loadPhtos() 放入要压缩的图片集合  <br>
+setCompressListener() 设置压缩图片回调监听方法 <br>
+compress()  开始压缩 <br>
 
 
-
-## 设置图片压缩参数
-
-       compressConfig = CompressConfig.builder()
-                .setUnCompressMinPixel(1000) // 最小像素不压缩，默认值：1000
-                .setUnCompressNormalPixel(2000) // 标准像素不压缩，默认值：2000
-                .setMaxPixel(1000) // 长或宽不超过的最大像素 (单位px)，默认值：1200
-                .setMaxSize(100 * 1024) // 压缩到的最大大小 (单位B)，默认值：200 * 1024 = 200KB
-                .enablePixelCompress(true) // 是否启用像素压缩，默认值：true
-                .enableQualityCompress(true) // 是否启用质量压缩，默认值：true
-                .enableReserveRaw(true) // 是否保留源文件，默认值：true
-                .setCacheDir("") // 压缩后缓存图片路径，默认值：Constants.COMPRESS_CACHE
-                .setShowCompressDialog(true) // 是否显示压缩进度条，默认值：false
-                .create();
-                
  ## 压缩图片方法及回调
+     ```
      
-      CompressImageManager.builder(this)
-                .config(compressConfig)
+        CompressImageManager.builder(this)
+                .setUnCompressMinPixel(1000) 
+                .setUnCompressNormalPixel(2000) 
+                .setMaxPixel(1000) 
+                .setMaxSize(100 * 1024) 
+                .enablePixelCompress(true) 
+                .enableQualityCompress(true) 
+                .enableReserveRaw(true) 
+                .setCacheDir("") 
+                .setShowCompressDialog(true) 
                 .loadPhtos(photos)
                 .setCompressListener(new CompressImage.CompressListener() {
                     @Override
                     public void onCompressSuccess(ArrayList<Photo> arrayList) {
-                       //成功后回调 ，返回压缩后的图片对象集合
                         Log.e("netease >>> ", "压缩成功" + arrayList.get(0).getCompressPath());
+                        if (dialog != null && !isFinishing()) {
+                            dialog.dismiss();
+                        }
                     }
 
                     @Override
                     public void onCompressFailed(ArrayList<Photo> images, String error) {
-                        //当压缩过程出现问题时调用
                         Log.e("netease >>> ", error);
                         if (dialog != null && !isFinishing()) {
                             dialog.dismiss();
                         }
                     }
                 }).compress();
+
+     ```
 
