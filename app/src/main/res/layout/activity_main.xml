@@ -58,6 +58,16 @@
             android:layout_marginTop="22dp"
             android:text="压缩后图片大小:"
             android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv4"
+            android:layout_alignLeft="@+id/tv4"
+            android:layout_marginTop="22dp"
+            android:text="压缩时间:"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 

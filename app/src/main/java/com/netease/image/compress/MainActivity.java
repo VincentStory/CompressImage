@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView image1;
     private ImageView image2;
-    private TextView tv1, tv2, tv3, tv4;
+    private TextView tv1, tv2, tv3, tv4,tv5;
     private String mPath1, mPath2;
 
     @Override
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         tv2 = findViewById(R.id.tv2);
         tv3 = findViewById(R.id.tv3);
         tv4 = findViewById(R.id.tv4);
+        tv5 = findViewById(R.id.tv5);
 
         image1.setOnClickListener(l -> {
             Intent intent = new Intent(MainActivity.this, ImageActivity.class);
@@ -148,9 +149,13 @@ public class MainActivity extends AppCompatActivity {
                 mPath1 = UriParseUtils.getPath(this, uri);
                 getString(mPath1, 1);
 
+
+                long startTime=System.currentTimeMillis();
                 // 压缩（集合？单张）
                 preCompress(mPath1);
+                long stopTime=System.currentTimeMillis();
 
+                tv5.setText("压缩时间："+(stopTime-startTime)+"ms");
 
             }
         }
