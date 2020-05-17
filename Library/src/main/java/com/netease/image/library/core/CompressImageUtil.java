@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.netease.image.library.config.CompressConfig;
 import com.netease.image.library.listener.CompressResultListener;
@@ -60,8 +62,8 @@ public class CompressImageUtil {
             sendMsg(false, imgPath, "像素压缩失败，bitmap为空", listener);
             return;
         }
-        //开启多线程进行压缩处理
-        new Thread(() -> {
+//开启多线程进行压缩处理
+        AsyncTask.SERIAL_EXECUTOR.execute(() -> {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             int options = 100;
             bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos); // 质量压缩方法，把压缩后的数据存放到baos中 (100表示不压缩，0表示压缩到最小)
@@ -87,7 +89,8 @@ public class CompressImageUtil {
                 sendMsg(false, imgPath, "质量压缩失败", listener);
                 e.printStackTrace();
             }
-        }).start();
+        });
+
     }
 
     /**
