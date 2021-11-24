@@ -3,6 +3,7 @@
 ## 压缩效果对比图
 
 ![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
+![效果图](https://github.com/VincentStory/CompressImage/blob/master/Screenshot_2021-11-24-10-56-22-023_com.net.image..jpg)
 
 ## 核心代码
 ```
