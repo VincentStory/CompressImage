@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.netease.image.compress.bean.UserViewInfo;
 import com.netease.image.compress.utils.ImagUtil;
 import com.netease.image.compress.utils.UriParseUtils;
 import com.netease.image.library.CompressImageManager;
@@ -35,6 +36,7 @@ import com.netease.image.library.listener.CompressImage;
 import com.netease.image.library.utils.CachePathUtils;
 import com.netease.image.library.utils.CommonUtils;
 import com.netease.image.library.utils.Constants;
+import com.previewlibrary.GPreviewBuilder;
 
 import static com.netease.image.compress.utils.ImagUtil.getImageStreamFromExternal;
 
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView image2;
     private TextView tv1, tv2, tv3, tv4,tv5;
     private String mPath1, mPath2;
+
+    private ArrayList<UserViewInfo> mThumbViewInfoList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,18 +80,20 @@ public class MainActivity extends AppCompatActivity {
         tv5 = findViewById(R.id.tv5);
 
         image1.setOnClickListener(l -> {
-            Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-            intent.putExtra("path", mPath1);
-            if (mPath1 != null)
-                startActivity(intent);
-
+            GPreviewBuilder.from(MainActivity.this)
+                    .setSingleData(new UserViewInfo(mPath1))
+                    .setCurrentIndex(0)
+                    .isDisableDrag(true)
+                    .setSingleShowType(false)
+                    .start();
         });
         image2.setOnClickListener(l -> {
-            Intent intent = new Intent(MainActivity.this, ImageActivity.class);
-            intent.putExtra("path", mPath2);
-            if (mPath2 != null)
-                startActivity(intent);
-
+            GPreviewBuilder.from(MainActivity.this)
+                    .setSingleData(new UserViewInfo(mPath2))
+                    .setCurrentIndex(0)
+                    .isDisableDrag(true)
+                    .setSingleShowType(false)
+                    .start();
         });
 
 //        compressConfig = CompressConfig.builder()
