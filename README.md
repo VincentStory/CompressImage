@@ -162,6 +162,9 @@ compress()  开始压缩 <br>
                 }).compress();
 ```
 
+apk下载地址：
+链接: https://pan.baidu.com/s/1ERqZDENvMdqOVfq4j4v0ng 提取码: gqx3 复制这段内容后打开百度网盘手机App，操作更方便哦
+
 -----------------------完成--------------------
 
 如果对你有所帮助欢迎Star或者Fork,有遇到其他问题可以加我VX进行沟通 VX：459005147 备注：android交流
