@@ -55,10 +55,14 @@ public class CommonUtils {
      * @param requestCode 回调码
      */
     public static void openAlbum(Activity activity, int requestCode) {
-        // 调用图库，获取所有本地图片
-        Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent();
+        /* 开启Pictures画面Type设定为image */
         intent.setType("image/*");
+        /* 使用Intent.ACTION_GET_CONTENT这个Action */
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        /* 取得相片后返回本画面 */
         activity.startActivityForResult(intent, requestCode);
+
     }
 
     /**
